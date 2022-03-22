@@ -7,8 +7,10 @@ import { GifsService } from '../../gifs/services/gifs.service';
 })
 export class SidebarComponent {
 
-  public historyList: string[] = [];
+  get historial(){
+    return this.gifsService.historial;
+  }
 
-  constructor( private GifsService: GifsService) { }
+  constructor( private gifsService: GifsService) { }
 
 }
