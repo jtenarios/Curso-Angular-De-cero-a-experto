@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Country } from '../../interfaces/paises.interface';
 import { PaisService } from '../../services/pais.service';
 
