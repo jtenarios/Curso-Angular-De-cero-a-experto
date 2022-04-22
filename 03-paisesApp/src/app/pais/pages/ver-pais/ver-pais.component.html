@@ -5,7 +5,7 @@
 <ng-template #divPais>
     <div class="row">
         <div class="col-12">
-            <h1>Pais: <small>{{pais.name}}</small></h1>
+            <h1>Pais: <small>{{pais.name.common}}</small></h1>
         </div>
     </div>
 
@@ -22,7 +22,28 @@
                 <li class="list-group-item">
                     <strong>Poblacion</strong> {{pais.population | number}}
                 </li>
+                <li class="list-group-item">
+                    <strong>Código numérico</strong> {{pais.ccn3}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Código alpha3</strong> {{pais.cca3}}
+                </li>
             </ul>
         </div>
     </div>
+
+    <h3>Traducciones</h3>
+    <div class="row">
+        <div class="col">
+            <span class="badge bg-primary mr-1">{{pais.translations['ara'].common}}</span>
+            <span class="badge bg-primary mr-1">{{pais.translations['deu'].common}}</span>
+            <span class="badge bg-primary mr-1">{{pais.translations['jpn'].common}}</span>
+            <span class="badge bg-primary mr-1">{{pais.translations['ita'].common}}</span>
+            <span class="badge bg-primary mr-1">{{pais.translations['rus'].common}}</span>
+        </div>
+    </div>
+
+    <pre class="mt-5">
+        {{pais | json}}
+    </pre>
 </ng-template>
