@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Heroe } from '../pages/heroe/interfaces/heroes.interface';
+import { Heroe } from '../interfaces/heroes.interface';
 
 @Injectable({
   providedIn: 'root'
