@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 
 // Modules
 import { HeroesRoutingModule } from './heroes-routing.module';
@@ -30,6 +31,7 @@ import { ImagenPipe } from './pipes/imagen.pipe';
   imports: [
     CommonModule,
     FlexLayoutModule,
+    FormsModule,
     MaterialModule,
     HeroesRoutingModule,
   ]
