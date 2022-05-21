@@ -1,0 +1,2 @@
+1. Moverse a la ruta del json
+2 json-server --watch db.json
