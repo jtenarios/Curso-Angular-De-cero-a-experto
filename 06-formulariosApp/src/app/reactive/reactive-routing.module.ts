@@ -5,6 +5,7 @@ import { BasicosComponent } from './basicos/basicos.component';
 import { DinamicosComponent } from './dinamicos/dinamicos.component';
 import { SwitchesComponent } from './switches/switches.component';
 
+
 const routes: Routes = [
   {
     path: '',
