@@ -9,8 +9,7 @@ const routes: Routes = [
     loadChildren: () => import('./paises/paises.module').then(m => m.PaisesModule)
   },
   {
-    path: '**',
-    redirectTo: 'selector'
+    path: '**', redirectTo: 'selector'
   }
 ];
 
