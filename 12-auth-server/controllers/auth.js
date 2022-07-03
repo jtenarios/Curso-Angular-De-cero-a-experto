@@ -1,6 +1,7 @@
 const { response } = require('express');
 const Usuario = require('../models/Usuario');
 const bcryp = require('bcryptjs');
+const { generarJWT } = require('../helpers/jwt')
 
 // Crear un nuevo usuario
 // req: nuestra petición
@@ -29,6 +30,9 @@ const crearusuario = async (req, res = response) => {
         dbUser.password = bcryp.hashSync(password, salt);
 
         // Generar e JWT
+        console.log('Generar e JWT');
+        const token = await generarJWT(dbUser.id, name);
+        console.log('JWT Generado');
 
         // Crear usuario de BD
         await dbUser.save();
@@ -37,7 +41,8 @@ const crearusuario = async (req, res = response) => {
         return res.status(201).json({
             ok: true,
             uid: dbUser.id,
-            name: name
+            name: name,
+            token: token
         });
 
     } catch (error) {
