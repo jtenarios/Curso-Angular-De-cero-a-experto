@@ -23,14 +23,15 @@ export class LoginComponent {
     private authService: AuthService) { }
 
   login() {
-    console.log(this.miFormulario.value);
+
+    console.log('login()', this.miFormulario.value);
     const { email, password } = this.miFormulario.value;
 
     this.authService.login(email, password)
       .subscribe(ok => {
-        
+
         console.log(ok);
-        
+
         if (ok === true) {
           this.router.navigateByUrl('/dashboard');
         } else {
