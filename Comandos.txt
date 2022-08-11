@@ -1,0 +1,11 @@
+Server:
+
+C:\Desarrollo\Sourcetree\Curso-Angular-De-cero-a-experto\12-auth-server
+npm run dev
+
+App:
+C:\Desarrollo\Sourcetree\Curso-Angular-De-cero-a-experto\12-authApp
+
+Usar Heroku:
+
+C:\Users\jtena\Downloads\heroku-win32-x64.tar\heroku-win32-x64\heroku\bin\heroku.cmd + [comandos]
