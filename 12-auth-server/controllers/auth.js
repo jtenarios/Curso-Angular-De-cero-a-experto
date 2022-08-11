@@ -9,7 +9,7 @@ const { generarJWT } = require('../helpers/jwt')
 const crearusuario = async (req, res = response) => {
 
     const { email, name, password } = req.body;
-    console.log(email, name, password);
+    console.log('crearusuario()', email, name, password);
 
     try {
         // Revisar que el email no exista ya
@@ -31,7 +31,7 @@ const crearusuario = async (req, res = response) => {
 
         // Generar e JWT
         console.log('Generar e JWT');
-        const token = await generarJWT(dbUser.id, name);
+        const token = await generarJWT(dbUser.id, name, email);
         console.log('JWT Generado');
 
         // Crear usuario de BD
@@ -42,7 +42,9 @@ const crearusuario = async (req, res = response) => {
             ok: true,
             uid: dbUser.id,
             name: name,
-            token: token
+            email: email,
+            token: token,
+
         });
 
     } catch (error) {
@@ -60,6 +62,7 @@ const crearusuario = async (req, res = response) => {
 const loginUsuario = async (req, res = response) => {
 
     const { email, password } = req.body;
+    console.log('loginUsuario()', email, password);
 
     try {
 
@@ -84,14 +87,16 @@ const loginUsuario = async (req, res = response) => {
         }
 
         // Generar el JWT
-        const token = await generarJWT(dbUser.id, dbUser.name);
+        const token = await generarJWT(dbUser.id, dbUser.name, dbUser.email);
 
         // Respuesta del servicio
         return res.json({
             ok: true,
             uid: dbUser.id,
             name: dbUser.name,
-            token
+            email: dbUser.email,
+            token,
+
         })
 
     } catch (error) {
@@ -107,17 +112,24 @@ const loginUsuario = async (req, res = response) => {
 // Validar y revalidar token
 const revalidarToken = async (req, res = response) => {
 
-    const { uid, name } = req;
+    const { uid } = req;
+
+    // Leer la BBDD para obtener el email
+    const dbUser = await Usuario.findById(uid);
+
+    console.log('revalidarToken()', uid);
+    //console.log(req);
 
     // Generar el JWT
-    const token = await generarJWT(uid, name);
+    const token = await generarJWT(uid, dbUser.name);
 
     // Respuesta del servicio
     return res.json({
         ok: true,
         uid,
-        name,
-        token
+        name: dbUser.name,
+        email: dbUser.email,
+        token,
     })
 };
 
