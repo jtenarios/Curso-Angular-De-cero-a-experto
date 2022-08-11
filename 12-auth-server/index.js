@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
+
 const { dbConection } = require('./db/config');
 
 //Cuando la aplicación cargue , lee el archivo .env y añade los valores a process.env
@@ -24,6 +26,11 @@ app.use(express.json());
 // Rutas
 // cuando alguie haga una petición a la ruta  'api/auth', importamos el auth.js
 app.use('/api/auth', require('./routes/auth'));
+
+// Manejar el resto de rutas
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public/index.html'));
+});
 
 // Levantar la aplicación de express
 app.listen(process.env.PORT, () => {
