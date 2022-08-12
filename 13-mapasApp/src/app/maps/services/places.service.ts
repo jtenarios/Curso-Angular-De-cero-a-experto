@@ -39,6 +39,12 @@ export class PlacesService {
   }
 
   getPlacesByQuery(query: string = '') {
+    if (query.length === 0) {
+      this.isLoadingPlaces = false;
+      this.places = [];
+      return;
+    }
+
     if ( !this.userLocation) throw Error ('No hay user location');
 
     this.isLoadingPlaces = true;
@@ -49,8 +55,6 @@ export class PlacesService {
       }
     })
       .subscribe( resp => {
-        console.log(resp.features);
-
         this.isLoadingPlaces = false;
         this.places = resp.features;
       })
