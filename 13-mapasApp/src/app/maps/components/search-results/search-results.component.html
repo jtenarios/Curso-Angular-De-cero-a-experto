@@ -15,6 +15,7 @@
         
         <button
             class="btn btn-sm"
+            (click)="getDirecions(place)"
             [ngClass]="(place.id === selectedId) ? ' btn-outline-light' : ' btn-outline-primary'"
         >
             Direcciones
